@@ -188,3 +188,19 @@ int mystrcmp(char s1[], char s2[]) {
     return (s1[i] < s2[i] ? -1 : +1);
 
 }
+
+//Ex.11
+
+void strrev (char s[]) {
+    
+    int size = strlen(s)-1;
+    int i;
+    char temp;
+    
+    for(i=0;i<=size/2;i++) {
+        temp = s[i];
+        s[i] = s[size-i];
+        s[size-i] = temp;
+    }
+
+}
