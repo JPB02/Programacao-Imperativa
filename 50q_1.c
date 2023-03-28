@@ -1,124 +1,190 @@
 #include <stdio.h>
+#include <math.h>
 #include <string.h>
 
-//EX.1
+//Ex.1
 
-int maior() {
+int biggetSeq () {
 
-	int x;
-	scanf("%d", &x);
-	int m = x;
+	int num;
 
-	while(x!=0) {
-		scanf("%d", &x);
-		if(x>m) {
-			m = x;
+	scanf("Input the numbers:\n%d",&num);
+
+	int biggest = num;
+
+	while(num!=0) {
+
+		scanf("%d", &num);
+
+		if(biggest < num) {
+			biggest = num;
 		}
 	}
-	printf("O maior elemento é: %d\n", m);
-	return m;
+
+	return biggest;
+
 }
 
-//EX.2
+//Ex.2
 
-int media() {
+int findAvg () {
 
-	int x;
-	scanf("%d", &x);
-	int media = x;
-	int count = 1;
+	int num;
 
-	while(x!=0) {
-		scanf("%d", &x);
-		media+= x;
+	scanf("Input the numbers:\n%d", &num);
+
+	int num_sum = num;
+	int count = -1;
+
+	while(num!=0) {
+
+		scanf("%d", &num);
+		num_sum += num;
 		count++;
+
 	}
-	int res = (media/count);
-	printf("A média dos elementos é: %d\n", res);
-	return res;
+
+	return (num_sum / count);
+
 }
 
-//EX.3
+//Ex.3
 
-int maior_2() {
+int sndSeq () {
 
-	int x;
-	scanf("%d", &x);
-	int fst = x;
-	int snd = x;
-	int tmp;
+	int num;
 
-	while(x!=0) {
-		scanf("%d", &x);
-		if(x>fst) {
-			tmp = fst;
-			fst = x;
-			snd = tmp;
+	scanf("Input the numbers:\n%d" , &num);
+
+	int big = num;
+	int snd = num;
+
+	while(num!=0) {
+
+		scanf("%d", &num);
+		if(num > big) {
+			snd = big;
+			big = num;
 		}
-		if(x<fst && x>snd) {
-			snd = x;
+
+		if(num < big && num > snd) {
+			snd = num;
 		}
+
 	}
-	printf("O segundo maior elemento é: %d\n", snd);
+
 	return snd;
+
 }
 
-//EX.4
+//Ex.4
 
-int bitsUm(unsigned int n) {
+int bitsUm (unsigned int n) {
 
 	int count = 0;
 
-	while(n>0) {
-		if(n%2 != 0) {
-			count++;
-			n/=2;
-		}
-	    else {
-	        n/=2;
-	    }
+    while(n>0) {
+        
+        if(n%2 != 0) {
+		    count++;
+		    n = n/2;
 	}
+	
+	    else {
+	        n = n/2;
+	    }
+	    
+    }
+
 	return count;
+	
 }
 
-//EX.5
+//Ex.5
 
-int trailingZ(unsigned int n) {
+int trailingZ (unsigned int n) {
 
 	int count = 0;
-
+	
 	while(n>0) {
-		if(n%2 == 0) {
-			count++;
-			n/=2;
-		}
+	    if(n%2 == 0) {
+	        count++;
+	        n = n/2;
+	    }
+	    
 	    else {
-	        n/=2;
+	        n = n/2;
 	    }
 	}
+	
 	return count;
+	
 }
 
-//EX.6
+//Ex.6
 
-int qDig(unsigned int n) {
+int qDig (unsigned int n) {
 
-	char str[1024];
-	sprintf(str, "%d", n);
+	int digits = 1;
 
-	return strlen(str);
-}
-
-//EX.7
-
-char mystrcat(char s1[], char s2[]) {
-
-	int i = strlen(s1);
-	int j;
-
-	for(j=0; s2[j]!='\0'; j++,i++) {
-		s1[i] = s2[j];
+    n/=10;
+    
+	while(n > 0) {
+		n/=10;
+		digits++;
 	}
+
+	return digits;
+
+}
+
+//Ex.7
+
+char *mystrcat (char s1[], char s2[]) {
+ 
+	int i;
+	int j = strlen(s1);
+
+	for(i=0; s2[i] != '\0'; i++) {
+		s1[j] = s2[i];
+		j++;
+	}
+
+	s1[j] = '\0';
+
+    return s1;
+}
+
+//Ex.8
+
+char *mystrcpy(char s1[], const char s2[]) {
+
+	int i;
+
+	for(i = 0; s2[i] != '\0'; i++) {
+		s1[i] = s2[i];
+	}
+
 	s1[i] = '\0';
-	return s1;
+
+    return s1;
+
+}
+
+//Ex.9
+
+int mystrcmp(char s1[], char s2[]) {
+
+    int i = 0;
+
+	while(s1[i] == s2[i]) {
+
+	    if(s1[i] == '\0') {
+	        return 0;
+	    }
+	    i++;
+	}
+
+    return (s1[i] < s2[i] ? -1 : +1);
+
 }
