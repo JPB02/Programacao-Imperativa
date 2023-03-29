@@ -204,3 +204,30 @@ void strrev (char s[]) {
     }
 
 }
+
+//Ex.12
+
+void strnoV (char t[]) {
+
+    int len = strlen(t);
+    int i,j;
+
+    for (i = 0; i < len; i++) {
+        
+        if (t[i] == 'a' || t[i] == 'e' || t[i] == 'i' || t[i] == 'o' || t[i] == 'u' ||
+            t[i] == 'A' || t[i] == 'E' || t[i] == 'I' || t[i] == 'O' || t[i] == 'U') {
+
+            for (j = i; j < len; j++) {
+
+                t[j] = t[j + 1];
+            }
+            i--;
+            len--;
+        }
+        t[len + 1] = '\0';
+    }
+}
+
+
+//Ex.13
+
