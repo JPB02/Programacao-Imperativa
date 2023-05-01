@@ -189,6 +189,27 @@ int mystrcmp(char s1[], char s2[]) {
 
 }
 
+//Ex.10
+
+
+char *mystrstr(char s1[], char s2[]) {
+    
+    char *aux = NULL;
+    int i,p;
+    
+    if (s2[0] == '\0') return s1;
+    
+    for(i = 0; s1[i] != '\0' && aux == NULL; i++) {
+        
+        for(p = 0; s2[p] != '\0' && s2[p] == s1[i+p];p++);
+        
+        if (s2[p] == '\0')
+            aux = s1 + i;
+    }
+    return aux;
+}
+
+
 //Ex.11
 
 void strrev (char s[]) {
@@ -229,5 +250,61 @@ void strnoV (char t[]) {
 }
 
 
-//Ex.13
+//Ex.21
+
+int contaVogais (char s[]) {
+
+	int i;
+	int vow_count = 0;
+
+	for(i = 0; i < strlen(s); i++) {
+
+		if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' ||
+            s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U') {
+			vow_count++;
+		}
+	}
+
+    return vow_count;
+}
+
+//Ex.23
+
+int palindroma (char s[]) {
+
+	int i,j;
+
+	for(i = 0; i < strlen(s); i++) {
+		for(j = (strlen(s)-1)-i; j != i; j--) {
+			if(s[i] != s[j]) {
+				return 1;
+			}
+		}
+	}
+
+    return 0;
+}
+
+//Ex.26
+
+void insere (int s[], int N, int x) {
+    
+    int i,p;
+    
+    for(i = 0; i < N; i++) {
+        if(x < s[i]) {
+            p = i;
+            break;
+        }
+        else {
+            p = i+1;
+        }
+    }
+    for(i = N+1; i >= p; i--) {
+        s[i] = s[i-1];
+    }
+    s[p] = x;
+}
+
+
 
